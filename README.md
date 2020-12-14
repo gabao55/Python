@@ -1,2 +1,2 @@
 # Python
-Some codes I developed for studying python.
+Some codes I developed for practicing python.
