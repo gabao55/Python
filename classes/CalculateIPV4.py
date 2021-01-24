@@ -137,5 +137,3 @@ class CalculateIPV4:
 
         self._rede_bin = inicio_ip_bin
         self._rede = self._convert_bin_to_dec(inicio_ip_bin)
-
-    def _calculate_number_IPs(self):
