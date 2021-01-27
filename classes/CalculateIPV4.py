@@ -21,6 +21,18 @@ class CalculateIPV4:
     def prefixo(self):
         return self._prefixo
 
+    @property
+    def rede(self):
+        return self._rede
+
+    @property
+    def broadcast(self):
+        return self._broadcast
+
+    @property
+    def num_ips(self):
+        return self._calculate_num_IPs()
+
     @ip.setter
     def ip(self, value):
         if not self._valida_valor(value):
@@ -137,3 +149,6 @@ class CalculateIPV4:
 
         self._rede_bin = inicio_ip_bin
         self._rede = self._convert_bin_to_dec(inicio_ip_bin)
+
+    def _calculate_num_IPs(self):
+        return 2 ** (32 - self.prefixo)
