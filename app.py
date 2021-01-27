@@ -12,7 +12,3 @@ print(f'Rede: {calculate_IPV4.rede}')
 print(f'Broadcast: {calculate_IPV4.broadcast}')
 print(f'Prefixo: {calculate_IPV4.prefixo}')
 print(f'Número de IPs: {calculate_IPV4.num_ips}')
-
-# '192.168.0.1'
-# '255.255.255.192'
-# 26
