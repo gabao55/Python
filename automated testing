@@ -1,0 +1,82 @@
+from selenium import webdriver
+
+username = 'username'
+password = 'password'
+
+class ChromeAuto:
+    def __init__(self):
+        self.driver_path = 'chromedriver' # Baixei na internet
+        self.options = webdriver.ChromeOptions()
+        self. options.add_argument('user-data-dir=Perfil')
+        self.chrome = webdriver.Chrome(self.driver_path, options=self.options)
+        
+    # Método para acessar um site:
+    def acessa(self,site):
+        self.chrome.get(site)
+
+    # Método para acessar o botão sign in no github:
+    def clica_sign_in(self):
+        try:
+            btn_sign_in = self.chrome.find_element_by_link_text('Sign in')
+            btn_sign_in.click()
+
+        except Exception as e:
+            print('Erro:', e)
+
+    # Método para inserir username e password e fazer login:
+    def login(self):
+        try:
+            input_login = self.chrome.find_element_by_id('login_field')
+            input_password = self.chrome.find_element_by_id('password')
+            input_login.send_keys(username)
+            input_password.send_keys(password)
+            btn_sing_in = self.chrome.find_element_by_name('commit')
+            btn_sing_in.click()
+
+        except Exception as e:
+            print('Erro: ', e)
+
+    # Método para cliclar no perfil:
+    def perfil(self):
+        try:
+            perfil = self.chrome.find_element_by_css_selector('body > div.position-relative.js-header-wrapper > header > div.Header-item.position-relative.mr-0.d-none.d-md-flex > details')
+            perfil.click()
+
+        except Exception as e:
+            print('Erro: ', e)
+
+    # Método para fazer log out:
+    def sign_out(self):
+        try:
+            perfil = self.chrome.find_element_by_css_selector(
+                'body > div.position-relative.js-header-wrapper > header > div.Header-item.position-relative.mr-0.d-none.d-md-flex > details > details-menu > form > button'
+            )
+            perfil.click()
+
+        except Exception as e:
+            print('Erro fazer logout:', e)
+
+    # Método para verificar o username:
+    def verify(self, usuario):
+        profile_link = self.chrome.find_element_by_class_name('user-profile-link')
+        profile_link_html = profile_link.get_attribute('innerHTML')
+        assert usuario in profile_link_html
+
+    # Método para fechar o chrome:
+    def sair(self):
+        self.chrome.quit()
+        
+if __name__ == '__main__':
+    chrome = ChromeAuto()
+    chrome.acessa('https://github.com/')
+
+    chrome.perfil()
+    chrome.sign_out()
+
+    chrome.clica_sign_in()
+    chrome.login()
+
+    chrome.perfil()
+    chrome.verify(username)
+
+    chrome.sair()
