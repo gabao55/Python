@@ -15,31 +15,19 @@ Exercício
 """
 
 def find_duplicates(lista):
-
     lista_duplicados = []
-
     testando = []
-
     index = 0
 
     for i in lista:
-
         testando = []
-
         lista_duplicados.append(-1)
-
         for j in lista[index]:
-
             if j in testando:
-
                 lista_duplicados[index] = j
-
                 break
-
             testando.append(j)
-
         index += 1
-
     return lista_duplicados
 
 lista_de_listas_de_inteiros = [
@@ -60,11 +48,7 @@ lista_de_listas_de_inteiros = [
 duplicados = find_duplicates(lista_de_listas_de_inteiros)
 
 for i in range(len(duplicados)):
-
     if duplicados[i] != -1:
-
         print(f'Na lista de número {i+1}, a primeira duplicação é {duplicados[i]}.')
-
     else:
-
         print(f'Na lista de número {i+1} não houve duplicação.')
