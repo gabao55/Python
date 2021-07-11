@@ -43,25 +43,17 @@ perguntas = {
 pontos = 0
 
 for pk, pv in perguntas.items(): # O .items serve para acessar os dois valores respectivos do dicionário
-
     print(f'{pk}: {pv["pergunta"]}')
-
     for letra, resposta in pv['respostas'].items():
-
         print(f'{letra}) {resposta}')
 
     resposta_usuario = input('\nQual a sua resposta (a, b, c, d ou e)? ')
-
+    
     if resposta_usuario == pv['resposta certa']:
-
         print('\nParabéns, você acertou!\n')
-
         pontos += 1
-
     else:
-
         print('\nVocê errou...\n')
 
 porcentagem = pontos/len(perguntas) * 100
-
 print(f'Você acertou {pontos}/{len(perguntas)} respostas.\n\nSua porcentagem de acerto foi de {porcentagem:.2f}%.')
