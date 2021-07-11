@@ -20,7 +20,6 @@ def add(argumento, lista):
 def undo(lista1, lista2):
     if not lista1:
         comando_invalido()
-
     else:
         lista2.append(lista1[-1])
         lista1.pop()
@@ -28,7 +27,6 @@ def undo(lista1, lista2):
 def redo(lista1, lista2):
     if not lista2:
         comando_invalido()
-
     else:
         lista1.append(lista2[-1])
         lista2.pop()
@@ -44,19 +42,14 @@ while True:
 
     if not tarefa:
         break
-
     elif tarefa == 'Adicionar tarefa':
         task = input('Insira a tarefa: ')
         add(task, tarefas)
-
     elif tarefa == 'Listar tarefas':
         list(tarefas)
-
     elif tarefa == 'Desfazer':
         undo(tarefas, refaz)
-
     elif tarefa == 'Refazer':
         redo(tarefas, refaz)
-
     else:
         comando_invalido()
